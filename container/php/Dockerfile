@@ -13,6 +13,10 @@ RUN docker-php-ext-install pdo_mysql
 # composerのインストール
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
+# xdebugのインストール
+RUN pecl install xdebug && \
+    docker-php-ext-enable xdebug
+
 # コンテナ内で作業する際のカレンとディレクトリの指定
 WORKDIR /var/www/html
 
